@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  brootShell = pkgs.writeShellScript "broot-shell" ''nu -c "with-env {ESCAPE_MODE: 'file'} {nu}"'';
+  brootShell = pkgs.writeShellScript "broot-shell" ''nu -c "with-env {ESCAPE_MODE: 'broot'} {nu}"'';
 in
 {
   programs.broot = {

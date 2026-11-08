@@ -5,49 +5,68 @@
     enable = true;
     settings = {
       add_newline = true;
-      format = ''
-        $cmd_duration [$directory](bright-white)$kubernetes$azure$git_status
-        $env_var$character'';
-
+      character = {
+        error_symbol = " [::](red)";
+        success_symbol = " [::](bright-white)";
+      };
       cmd_duration = {
         format = "[ took $duration]($style)\n\n";
-        style = "italic white";
         min_time = 2000;
-      };
-
-      env_var.ESCAPE_MODE = {
-        style = "italic purple";
-        variable = "ESCAPE_MODE";
-        format = "[ $env_value]($style)";
-      };
-      character = {
-        success_symbol = " [->](bright-white)";
-        error_symbol = " [|>](red)";
+        style = "italic white";
       };
       directory = {
-        style = "blue";
-        format = "[$path]($style)";
         fish_style_pwd_dir_length = 1;
+        format = "[cwd::](white)[$path]($style)";
+        style = "blue";
+        truncation_length = 2;
       };
-
-      kubernetes = {
-        style = "green";
-        format = " [\\[[[k8s::](bright-white)$context([:](bright-white)[$namespace](yellow))]($style)\\]](bright-white)";
+      env_var = {
+        ESCAPE_MODE = {
+          format = "\n esc::[$env_value]($style)";
+          style = "purple";
+          variable = "ESCAPE_MODE";
+        };
+      };
+      format = ''
+        $cmd_duration [$directory](white)$git_branch$git_status$git_metrics$kubernetes$terraform$nodejs$env_var
+        $character'';
+      git_branch = {
+        format = "\n git::[$branch]($style)(white)";
+        style = "yellow";
+      };
+      git_metrics = {
+        added_style = "green dimmed";
+        deleted_style = "red dimmed";
         disabled = false;
+        format = "[:](dimmed)[+$added]($added_style)[-$deleted]($deleted_style)";
+        only_nonzero_diffs = true;
+      };
+      git_status = {
+        deleted = "x";
+        diverged = "⇡⇣";
+        format = "[:](dimmed)[$all_status$ahead_behind]($style)(white)";
+        style = "blue dimmed";
+        up_to_date = "";
+      };
+      kubernetes = {
         contexts = [
           {
             context_pattern = ".*prod.*";
             style = "red";
           }
         ];
+        disabled = false;
+        format = "\n k8s::[$context](yellow)[:](white dimmed)[$namespace](green dimmed)(white)";
       };
-      git_status = {
-        style = "red";
-        deleted = "x";
-        diverged = "[⇡⇣](purple)";
-        up_to_date = "[](green)";
-        format = " [\\[[$all_status$ahead_behind]($style)\\]](bright-white)";
+      nodejs = {
+        disabled = false;
+        format = "\n njs::[$version](purple)";
+      };
+      terraform = {
+        disabled = false;
+        format = "\n tfv::[$version](purple)";
       };
     };
+
   };
 }

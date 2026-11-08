@@ -57,6 +57,7 @@ export module mod {
     export def shell [
         ...packages  # Packages to temporarily install
     ] {
-        nix-shell --command $"ESCAPE_MODE=\"($packages)\" nu" -p ...$packages;
+        let prompt = $"(ansi cyan)nix(ansi reset):(ansi cyan_dimmed)($packages | str join $"(ansi reset):(ansi cyan_dimmed)")"
+        nix-shell --command $"ESCAPE_MODE=\"($prompt)\" nu" -p ...$packages;
     }
 }

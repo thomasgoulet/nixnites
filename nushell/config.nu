@@ -45,14 +45,14 @@ let theme = {
     shape_closure: green
     shape_custom: green
     shape_datetime: cyan
-    shape_directory: cyan
-    shape_external: cyan
-    shape_externalarg: green
-    shape_filepath: cyan
-    shape_flag: blue
+    shape_directory: white_italic
+    shape_external: cyan_italic
+    shape_externalarg: white
+    shape_filepath: white_italic
+    shape_flag: cyan
     shape_float: purple
     shape_garbage: red_underline
-    shape_globpattern: cyan
+    shape_globpattern: white_italic
     shape_int: purple
     shape_internalcall: cyan_italic
     shape_list: blue
@@ -66,7 +66,7 @@ let theme = {
     shape_record: blue
     shape_redirection: purple
     shape_signature: green
-    shape_string: green
+    shape_string: white
     shape_string_interpolation: blue
     shape_table: blue
     shape_variable: purple

@@ -72,7 +72,7 @@ remove_worktree = "prefix+d"
 [[keys.command]]
 key = "prefix+f"
 type = "popup"
-command = "nu -c 'with-env { ESCAPE_MODE: floating } { nu }'"
+command = "nu -c 'with-env { ESCAPE_MODE: float } { nu }'"
 description = "open floating terminal"
 width = "80%"
 height = "80%"
