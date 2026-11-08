@@ -5,6 +5,7 @@
     includes = [
       den.batteries.primary-user
       den.aspects.docker
+      den.aspects.dotfiles
       den.aspects.excalidash
       den.aspects.infra
       den.aspects.notes

@@ -13,7 +13,6 @@
 
   environment.variables = {
     BROWSER = "wsl-open";
-    NH_FLAKE = "/home/thomas/.config/flake";
     NH_HOST = config.networking.hostName;
   };
 

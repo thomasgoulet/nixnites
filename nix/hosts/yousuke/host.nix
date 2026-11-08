@@ -14,7 +14,6 @@
   ];
 
   environment.variables = {
-    NH_FLAKE = "/home/thom/.config/flake";
     NH_HOST = config.networking.hostName;
   };
 
