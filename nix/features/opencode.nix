@@ -57,9 +57,13 @@ in
                 type = "local";
                 command = [
                   "nu-mcp"
+                  "--add-read-path"
+                  "/nix/store"
                   "--tools-dir"
                   "${config.xdg.configHome}/nushell/tools"
                   "--enable-nu"
+                  "--add-path"
+                  "${config.home.homeDirectory}/.local/share/handoffs"
                 ];
               };
             };
