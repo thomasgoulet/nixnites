@@ -103,6 +103,7 @@ $env.config = {
     history: {
         max_size: 10000
         file_format: "sqlite"
+        path: ($nu.data-dir | path join "history.sqlite3")
     }
 
     completions: {
@@ -225,6 +226,10 @@ $env.config = {
             event: { until: [ {edit: cutfromstart} ] }
         }
     ]
+}
+
+if not ($env.config.history.path | path dirname | path exists) {
+    mkdir ($env.config.history.path | path dirname) | ignore
 }
 
 if ("ESCAPE_MODE" in $env) {
