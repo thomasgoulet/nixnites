@@ -14,37 +14,35 @@ in
     pkgs.prettier
   ];
 
-  programs.helix.languages.language-server =
-    {
-      harper-ls = {
-        command = "harper-ls";
-        args = [ "--stdio" ];
-        config.harper-ls = {
-          diagnosticSeverity = "warning";
-          dialect = "Canadian";
-          linters = {
-            SpellCheck = true;
-            SpelledNumbers = false;
-            AnA = true;
-            SentenceCapitalization = true;
-            UnclosedQuotes = true;
-            WrongApostrophe = true;
-            LongSentences = false;
-            RepeatedWords = true;
-            Spaces = true;
-            CorrectNumberSuffix = true;
-          };
-          markdown.IgnoreLinkTitle = true;
+  programs.helix.languages.language-server = {
+    harper-ls = {
+      command = "harper-ls";
+      args = [ "--stdio" ];
+      config.harper-ls = {
+        diagnosticSeverity = "warning";
+        dialect = "Canadian";
+        linters = {
+          SpellCheck = true;
+          SpelledNumbers = false;
+          AnA = true;
+          SentenceCapitalization = true;
+          UnclosedQuotes = true;
+          WrongApostrophe = true;
+          LongSentences = false;
+          RepeatedWords = true;
+          Spaces = true;
+          CorrectNumberSuffix = true;
         };
+        markdown.IgnoreLinkTitle = true;
       };
-    }
-    // {
-      zk = {
-        command = "zk";
-        args = [ "lsp" ];
-      };
-    }
-    |> lib.optionalAttrs zk;
+    };
+  }
+  // lib.optionalAttrs zk {
+    zk = {
+      command = "zk";
+      args = [ "lsp" ];
+    };
+  };
 
   programs.helix.languages.language = [
     (
@@ -62,7 +60,7 @@ in
           "harper-ls"
         ];
       }
-      // {
+      // lib.optionalAttrs zk {
         roots = [ ".zk" ];
         language-servers = [
           "marksman"
@@ -70,7 +68,6 @@ in
           "zk"
         ];
       }
-      |> lib.optionalAttrs zk
     )
   ];
 
