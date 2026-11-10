@@ -41,8 +41,6 @@ lib.mkMerge [
   })
 
   {
-    networking.hosts."127.0.0.1" = [ "searx.home.arpa" ];
-
     systemd.services.searx-forward = {
       description = "Loopback TCP forwarder to the searx container";
       wantedBy = [ "multi-user.target" ];
