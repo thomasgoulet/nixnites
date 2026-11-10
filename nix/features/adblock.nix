@@ -1,37 +1,12 @@
 { den, ... }:
 {
-  den.aspects.privacy = {
+  den.aspects.adblock = {
     nixos =
       { pkgs, ... }:
       {
         environment.systemPackages = [
           pkgs.searxng
         ];
-
-        services.searx = {
-          enable = true;
-          settings = {
-            server = {
-              port = 8888;
-              bind_address = "127.0.0.1";
-              secret_key = "not-so-secret-is-it";
-            };
-            engines = [
-              {
-                name = "brave";
-                disabled = true;
-              }
-              {
-                name = "nixos wiki";
-                disabled = false;
-              }
-              {
-                name = "wikidata";
-                disabled = true;
-              }
-            ];
-          };
-        };
 
         services.blocky = {
           enable = true;
