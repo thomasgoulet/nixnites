@@ -28,10 +28,10 @@
         };
       };
       format = ''
-        $cmd_duration [$directory](white)$git_branch$git_status$git_metrics$kubernetes$terraform$nodejs$env_var
+        $cmd_duration $directory$git_branch$git_status$git_metrics$kubernetes$terraform$nodejs$env_var
         $character'';
       git_branch = {
-        format = "\n git::[$branch]($style)(white)";
+        format = "\n [git::](white)[$branch]($style)";
         style = "yellow";
       };
       git_metrics = {
@@ -44,7 +44,7 @@
       git_status = {
         deleted = "x";
         diverged = "⇡⇣";
-        format = "[:](dimmed)[$all_status$ahead_behind]($style)(white)";
+        format = "[:](dimmed)[$all_status$ahead_behind]($style)";
         style = "blue dimmed";
         up_to_date = "";
       };
@@ -56,15 +56,15 @@
           }
         ];
         disabled = false;
-        format = "\n k8s::[$context](yellow)[:](white dimmed)[$namespace](green dimmed)(white)";
+        format = "\n [k8s::](white)[$context](yellow)[:](white dimmed)[$namespace](green dimmed)";
       };
       nodejs = {
         disabled = false;
-        format = "\n njs::[$version](purple)";
+        format = "\n [njs::](white)[$version](purple)";
       };
       terraform = {
         disabled = false;
-        format = "\n tfv::[$version](purple)";
+        format = "\n [tfv::](white)[$version](purple)";
       };
     };
 
