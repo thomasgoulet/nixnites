@@ -6,11 +6,11 @@ export module mod {
     export def edit [
         ...args: string  # Arguments to pass to $EDITOR
     ] {
-        record $"($env.EDITOR) ($args | str join ' ')" 0sec { run-external $env.EDITOR }
+        report $"($env.EDITOR) ($args | str join ' ')" 0sec { run-external $env.EDITOR }
     }
 
-    # Record a closure's execution in herdr
-    export def record [
+    # Report a closure's execution in herdr
+    export def report [
         id: string  # Id for the process
         remove_timeout: duration  # Time to wait before clearing the agent
         closure: closure  # Closure to execute

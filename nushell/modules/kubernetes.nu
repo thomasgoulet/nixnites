@@ -212,7 +212,7 @@ export module mod {
         --logs (-l)  # Get the logs of a resource
         --logs-previous (-L)  # Get the logs of the previous pod
         --follow (-f)  # Get the logs of a resource and follow them
-        --port_forward (-p): int  # Port-forward the resource's port to localhost
+        --port-forward (-p): int  # Port-forward the resource's port to localhost
         --restart (-r)  # Restart the resources's pods
         --watch (-w)  # Watch the output
     ] {

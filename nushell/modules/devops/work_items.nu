@@ -27,16 +27,9 @@ export def format-work-items []: string -> any {
         | default []
         | where {|relation| $relation.attributes.name? in ["Child" "Parent" "Pull Request"]}
         | each {|relation|
-            if ($relation.attributes.name == "Pull Request") {
-                {
-                    type: $relation.attributes.name
-                    id: ($relation.url | split row "%2F" | last)
-                }
-            } else {
-                {
-                    type: $relation.attributes.name
-                    id: ($relation.url | split row "/" | last)
-                }
+            {
+                type: $relation.attributes.name
+                id: ($relation.url | split row "/" | split row "%2F" | last)
             }
         }
     }

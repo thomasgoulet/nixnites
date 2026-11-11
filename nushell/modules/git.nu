@@ -11,30 +11,4 @@ export module mod {
         git log --oneline $"($tag_or_commit)..HEAD";
     }
 
-    # Pull all repos under the current folder recursively
-    export def pull-subdirectories [
-        branch = "master"  # Default branch name to use
-    ] {
-        if (".git" | path exists) {
-            print $"Pulling (pwd)";
-            git switch $branch o> (null-device);
-            git pull --prune o> (null-device);
-            return
-        }
-        ls -a
-        | where type == dir
-        | par-each {|s|
-            cd $s.name;
-            git pull-subdirectories;
-        }
-        return;
-    }
-
-    export def push-bundle [
-        branch: string  # Branch name to create the bundle from
-    ] {
-        let bundle = (git remote get-url origin);
-        git bundle create $bundle $branch
-    }
-
 }

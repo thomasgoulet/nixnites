@@ -17,23 +17,20 @@ export module mod {
 
         let cache = (stor open).cache;
 
-        # If key is in cache and has not timed out
-        if (
+        let potential_result = (
             $cache
             | where key == $key and expirystamp > (date now | format date %s | into int)
-            | length
-            | into bool
-        ) {
+        );
+
+        if ($potential_result | is-not-empty) {
             return (
-                $cache
-                | where key == $key and expirystamp > (date now | format date %s | into int)
+                $potential_result
                 | first
                 | get value
                 | from json
             );
         }
 
-        # If key is not present or expired
         let value = do $closure;
         try {
             stor delete -t cache -w $"key == '($key)'" o> (null-device);
