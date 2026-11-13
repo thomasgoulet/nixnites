@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  stylix.targets.font-packages.enable = true;
+
   fonts = {
     enableDefaultPackages = true;
     packages = [

@@ -182,7 +182,6 @@ in
         card_borders = false;
         clipboard_history_max_entries = 10;
         corner_radius_scale = 0.5;
-        font_family = "CaskaydiaCove Nerd Font";
         input_borders = false;
         launch_apps_as_systemd_services = true;
         polkit_agent = true;
@@ -235,33 +234,10 @@ in
 
       system.monitor.enabled = false;
 
-      theme = {
-        builtin = "Catppuccin";
-        community_palette = "Catppuccin Mocha Blue";
-        source = "community";
-
-        templates = {
-          builtin_ids = [
-            "alacritty"
-            "umbriel"
-          ];
-          community_ids = [
-            "spicetify"
-            "zen-browser"
-            "discord"
-          ];
-          enable_community_templates = true;
-        };
-      };
-
       wallpaper = {
         directory = "${../../../resources/wallpaper}";
         fill_color = "on_primary";
         transition_on_startup = true;
-
-        default.path = "/home/thom/.config/wallpaper/catppuccin.jpg";
-        last.path = "/home/thom/.config/wallpaper/catppuccin.jpg";
-        monitors.eDP-1.path = "/home/thom/.config/wallpaper/catppuccin.jpg";
       };
 
       widget = {

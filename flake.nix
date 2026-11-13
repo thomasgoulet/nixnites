@@ -37,14 +37,18 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{ flake-parts, den, ... }:
     let
       # import-tree matches paths relative to ./nix (i.e. `/features/docker.nix`).
-      # the equivalent glob looks like `nix/{*,{features,hosts,users}/*}.nix`
-      moduleFiles = ''/((features|hosts|users)/)?[^/]+\.nix'';
+      # the equivalent glob looks like `nix/{*,{features,hosts,users,themes}/*}.nix`
+      moduleFiles = ''/((features|hosts|users|themes)/)?[^/]+\.nix'';
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [

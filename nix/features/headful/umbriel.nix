@@ -5,7 +5,6 @@ let
 in
 {
   home.packages = [
-    pkgs.bibata-cursors
     pkgs.playerctl
   ];
 
@@ -34,8 +33,8 @@ in
         focus.follows_mouse = "off";
 
         cursor = {
-          theme = "Bibata-Modern-Classic";
-          size = 24;
+          theme = config.stylix.cursor.name;
+          size = config.stylix.cursor.size;
         };
       };
 
@@ -84,10 +83,10 @@ in
       colors = {
         shadow = "#00000077";
         border = {
-          focused = "#45475aFF";
+          focused = "${colors.base02}FF";
           unfocused = "#00000000";
         };
-        overview.background_tint = "#1e1e2eFF";
+        overview.background_tint = "${colors.base00}FF";
       };
 
       events.lid_close = "noctalia msg session lock";

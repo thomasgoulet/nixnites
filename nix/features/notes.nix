@@ -9,6 +9,9 @@
         pkgs,
         ...
       }:
+      let
+        colors = config.lib.stylix.colors.withHashtag;
+      in
       {
         home.packages = [
           pkgs.fzf
@@ -24,7 +27,7 @@
 
         xdg.configFile."tuxedo/config.toml" = {
           source = (pkgs.formats.toml { }).generate "tuxedo-config.toml" {
-            theme = "Catppuccin Mocha";
+            theme = "Stylix";
             density = "cozy";
             sort = "priority";
             show_left = true;
@@ -37,34 +40,34 @@
           force = true;
         };
 
-        xdg.configFile."tuxedo/themes/catpuccin.toml" = {
-          source = (pkgs.formats.toml { }).generate "tuxedo-catppuccin.toml" {
-            name = "Catppuccin Mocha";
-            bg = "#1E1E2E";
-            panel = "#181825";
-            border = "#45475A";
-            fg = "#CDD6F4";
-            dim = "#7F849C";
-            accent = "#89B4FA";
-            cursor = "#313244";
-            selection = "#313244";
-            selected = "#313244";
-            statusbar = "#181825";
-            status_fg = "#BAC2DE";
-            mode_fg = "#1E1E2E";
-            mode_bg = "#89B4FA";
-            pri_a = "#F38BA8";
-            pri_b = "#FAB387";
-            pri_c = "#A6E3A1";
-            pri_d = "#89B4FA";
-            pri_other = "#CBA6F7";
-            project = "#CBA6F7";
-            context = "#94E2D5";
-            done = "#A6ADC8";
-            matched = "#F9E2AF";
-            due = "#F9E2AF";
-            overdue = "#F38BA8";
-            today = "#F38BA8";
+        xdg.configFile."tuxedo/themes/stylix.toml" = {
+          source = (pkgs.formats.toml { }).generate "tuxedo-stylix.toml" {
+            name = "Stylix";
+            bg = colors.base00;
+            panel = colors.base10;
+            border = colors.base02;
+            fg = colors.base05;
+            dim = colors.base03;
+            accent = colors.base0D;
+            cursor = colors.base01;
+            selection = colors.base01;
+            selected = colors.base01;
+            statusbar = colors.base10;
+            status_fg = colors.base04;
+            mode_fg = colors.base00;
+            mode_bg = colors.base0D;
+            pri_a = colors.base08;
+            pri_b = colors.base09;
+            pri_c = colors.base0B;
+            pri_d = colors.base0D;
+            pri_other = colors.base0E;
+            project = colors.base0E;
+            context = colors.base0C;
+            done = colors.base04;
+            matched = colors.base0A;
+            due = colors.base0A;
+            overdue = colors.base08;
+            today = colors.base08;
           };
         };
 

@@ -35,17 +35,6 @@
           ]
         ];
         statusPanelView = "allBranchesLog";
-        theme = {
-          activeBorderColor = [
-            "blue"
-            "bold"
-          ];
-          inactiveBorderColor = [
-            "white"
-            "bold"
-          ];
-          selectedLineBgColor = [ "#3e4452" ];
-        };
         timeFormat = "2006-01-02 / 15h04m";
       };
       notARepository = "skip";

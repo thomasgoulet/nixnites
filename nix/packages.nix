@@ -16,7 +16,10 @@
             home.username = "nix";
             home.homeDirectory = "/homeless";
             home.stateVersion = "26.05";
-            programs.helix.enable = true;
+            programs.helix = {
+              enable = true;
+              settings.theme = "catppuccin_mocha";
+            };
           }
           (inputs.import-tree ./features/editor)
         ];
