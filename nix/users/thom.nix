@@ -10,6 +10,7 @@
       den.aspects.headful
       den.aspects.notes
       den.aspects.opencode
+      den.aspects.search
       den.aspects.terminal
     ];
 
