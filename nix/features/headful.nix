@@ -1,8 +1,54 @@
 { den, inputs, ... }:
+let
+  hostOptions =
+    { lib, ... }:
+    {
+      options.host = {
+        display = {
+          output = lib.mkOption {
+            type = lib.types.str;
+            description = "Name of the primary display output.";
+          };
+          width = lib.mkOption {
+            type = lib.types.int;
+            description = "Width of the primary display in pixels.";
+          };
+          height = lib.mkOption {
+            type = lib.types.int;
+            description = "Height of the primary display in pixels.";
+          };
+          refreshRate = lib.mkOption {
+            type = lib.types.int;
+            description = "Refresh rate of the primary display in Hz.";
+          };
+          scale = lib.mkOption {
+            type = lib.types.float;
+            description = "Scale factor of the primary display.";
+          };
+        };
+
+        keyboard = {
+          layout = lib.mkOption {
+            type = lib.types.str;
+            description = "Comma-separated XKB layouts.";
+          };
+          variant = lib.mkOption {
+            type = lib.types.str;
+            description = "Comma-separated XKB variants, matching the layouts.";
+          };
+          options = lib.mkOption {
+            type = lib.types.str;
+            description = "Comma-separated XKB options.";
+          };
+        };
+      };
+    };
+in
 {
   den.aspects.headful = {
 
     includes = [
+      den.aspects.greeter
       (den.batteries.unfree [
         "spotify"
         "spicetify-catppuccin"
@@ -14,17 +60,14 @@
       { pkgs, ... }:
       {
         imports = [
-          inputs.niri.nixosModules.niri
+          inputs.umbriel.nixosModules.default
+          hostOptions
         ];
 
         hardware.graphics.enable = true;
         security.polkit.enable = true;
-        systemd.user.services.niri-flake-polkit.enable = false;
 
-        programs.niri = {
-          enable = true;
-          package = inputs.niri.packages.${pkgs.system}.niri-unstable;
-        };
+        programs.umbriel.enable = true;
 
         environment.sessionVariables = {
           NIXOS_OZONE_WL = 1;
@@ -36,8 +79,6 @@
 
           pkgs.bibata-cursors
           pkgs.bitwarden-cli
-          pkgs.noctalia
-          pkgs.xwayland-satellite
 
           inputs.zen-browser.packages.${pkgs.system}.default
         ];
@@ -54,6 +95,8 @@
         imports = [
           (inputs.import-tree ./headful)
           spicetify-module
+          inputs.umbriel.homeModules.default
+          inputs.noctalia.homeModules.default
         ];
 
         programs.spicetify = {

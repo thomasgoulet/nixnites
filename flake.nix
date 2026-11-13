@@ -20,7 +20,8 @@
     import-tree.url = "github:denful/import-tree";
 
     # others
-    niri.url = "github:sodiboo/niri-flake";
+    umbriel.url = "github:noctalia-dev/umbriel";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
     nu-mcp = {
       url = "github:ck3mp3r/nu-mcp";
       inputs.nixpkgs.follows = "nixpkgs";
