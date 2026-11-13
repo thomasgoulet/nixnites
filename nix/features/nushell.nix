@@ -19,7 +19,7 @@
         inherit (lib) concatStringsSep mapAttrsToList;
         env =
           ((removeAttrs osConfig.environment.variables [ "PATH" ]) // config.home.sessionVariables)
-          |> mapAttrsToList (name: value: "$env.${name} = \"${value}\"")
+          |> mapAttrsToList (name: value: "$env.${name} = \"${toString value}\"")
           |> concatStringsSep "\n";
         checkoutPath = osConfig.environment.variables.NH_FLAKE;
         generatedEnv = pkgs.writeText "nushell-env.nu" (env + "\n" + (builtins.readFile ./nushell/env.nu));

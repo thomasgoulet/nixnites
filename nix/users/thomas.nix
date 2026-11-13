@@ -4,6 +4,7 @@
 
     includes = [
       den.batteries.primary-user
+      den.aspects.catppuccin-mocha
       den.aspects.dashboard
       den.aspects.docker
       den.aspects.dotfiles

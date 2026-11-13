@@ -30,6 +30,7 @@ in
       }:
       let
         pkgs-stable = inputs'.nixpkgs-stable.legacyPackages;
+        colors = config.lib.stylix.colors.withHashtag;
       in
       {
         home.packages = [
@@ -89,7 +90,7 @@ in
             agents = {
               review = {
                 mode = "subagent";
-                color = "#f5c2e7";
+                color = colors.base0E;
                 system = prompts.review;
                 permissions = [
                   {
@@ -113,7 +114,7 @@ in
               ];
               docs = {
                 mode = "all";
-                color = "#89b4fa";
+                color = colors.base0D;
                 system = prompts.docs;
                 permissions = [
                   {
@@ -148,8 +149,8 @@ in
                   }
                 ];
               };
-              build.color = "#cba6f7";
-              plan.color = "#a6e3a1";
+              build.color = colors.base0E;
+              plan.color = colors.base0B;
             };
           };
         };
@@ -159,7 +160,7 @@ in
           text = builtins.toJSON {
             "$schema" = "https://opencode.ai/v2/cli.json";
             theme = {
-              name = "catppuccin";
+              name = config.stylix.opencode;
               mode = "dark";
             };
             scroll.acceleration = true;

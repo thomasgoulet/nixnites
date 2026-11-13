@@ -51,7 +51,6 @@ in
       den.aspects.greeter
       (den.batteries.unfree [
         "spotify"
-        "spicetify-catppuccin"
         "zen-browser"
       ])
     ];
@@ -77,7 +76,6 @@ in
           # TODO - Remove alacritty after installing a better terminal emulator
           pkgs.alacritty
 
-          pkgs.bibata-cursors
           pkgs.bitwarden-cli
 
           inputs.zen-browser.packages.${pkgs.system}.default
@@ -86,23 +84,16 @@ in
       };
 
     homeManager =
-      { pkgs, ... }:
-      let
-        spicetify-pkg = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-        spicetify-module = inputs.spicetify-nix.homeManagerModules.spicetify;
-      in
       {
         imports = [
           (inputs.import-tree ./headful)
-          spicetify-module
+          inputs.spicetify-nix.homeManagerModules.spicetify
           inputs.umbriel.homeModules.default
           inputs.noctalia.homeModules.default
         ];
 
         programs.spicetify = {
           enable = true;
-          theme = spicetify-pkg.themes.catppuccin;
-          colorScheme = "mocha";
           wayland = true;
         };
 

@@ -108,13 +108,6 @@
               port = 8887;
               bind_address = "127.0.0.1";
             };
-            theme = {
-              background-color = "240 21 15";
-              primary-color = "217 92 76";
-              positive-color = "115 54 76";
-              negative-color = "343 81 75";
-              contrast-multiplier = 1.3;
-            };
             pages = [
               {
                 name = "Search";

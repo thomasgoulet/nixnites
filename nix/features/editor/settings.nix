@@ -1,7 +1,6 @@
 { ... }:
 {
   programs.helix.settings = {
-    theme = "catppuccin_mocha";
     editor = {
       bufferline = "always";
       color-modes = true;
