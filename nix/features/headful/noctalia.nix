@@ -254,7 +254,7 @@ in
           type = "custom_button";
 
           actions = {
-            left = "exec alacritty";
+            left = "exec wezterm";
             middle = "none";
           };
         };

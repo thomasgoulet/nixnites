@@ -36,12 +36,12 @@ in
       imports = [ opencodeOption ];
 
       stylix.targets = {
-        alacritty.enable = true;
         broot.enable = true;
         lazygit.enable = true;
         noctalia.enable = true;
         spicetify.enable = true;
         vesktop.enable = true;
+        wezterm.enable = true;
         zen-browser = {
           enable = true;
           profileNames = [ "Default Profile" ];
