@@ -7,7 +7,13 @@
     ];
 
     nixos =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
+      let
+        koi = import ../../resources/wallpaper/koi {
+          inherit pkgs;
+          colors = config.lib.stylix.colors.withHashtag;
+        };
+      in
       {
         stylix = {
           greeter = "Gruvbox";
@@ -15,7 +21,7 @@
 
           base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
           override.base10 = "191c1d";
-          image = ../../resources/wallpaper/gruvbox.png;
+          image = koi;
 
           cursor = {
             package = pkgs.bibata-cursors;
