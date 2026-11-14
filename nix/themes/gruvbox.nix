@@ -37,12 +37,13 @@
       };
 
     homeManager = {
-      stylix.opencode = "system";
+      stylix.opencode = "gruvbox";
 
       programs = {
         bat.config.theme = "gruvbox-dark";
         git.settings.delta.syntax-theme = "gruvbox-dark";
         helix.settings.theme = "gruvbox_dark_hard";
+        herdr.settings.theme.name = "gruvbox-dark";
       };
 
       stylix = {

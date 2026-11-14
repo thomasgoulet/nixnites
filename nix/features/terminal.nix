@@ -25,7 +25,6 @@
 
           # Core functionality
           pkgs.carapace
-          pkgs.herdr
 
           # General utilities
           pkgs.delta
