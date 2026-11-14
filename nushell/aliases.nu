@@ -1,5 +1,6 @@
 module aliases {
 
+    export alias ai = opencode;
     export alias bye = wsl.exe --shutdown;
     export alias c = clear;
     export alias b64 = decode base64;
