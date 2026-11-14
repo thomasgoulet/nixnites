@@ -7,7 +7,13 @@
     ];
 
     nixos =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
+      let
+        koi = import ../../resources/wallpaper/koi {
+          inherit pkgs;
+          colors = config.lib.stylix.colors.withHashtag;
+        };
+      in
       {
         stylix = {
           greeter = "Rosé Pine";
@@ -16,6 +22,7 @@
 
           base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
           override.base10 = "16141f";
+          image = koi;
 
           cursor = {
             package = pkgs.bibata-cursors;

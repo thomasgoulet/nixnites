@@ -7,7 +7,13 @@
     ];
 
     nixos =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
+      let
+        koi = import ../../resources/wallpaper/koi {
+          inherit pkgs;
+          colors = config.lib.stylix.colors.withHashtag;
+        };
+      in
       {
         stylix = {
           greeter = "Catppuccin";
@@ -16,7 +22,7 @@
 
           base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
           override.base10 = "181825";
-          image = ../../resources/wallpaper/catppuccin.jpg;
+          image = koi;
 
           cursor = {
             package = pkgs.bibata-cursors;

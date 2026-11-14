@@ -14,7 +14,7 @@
       den.aspects.search
       den.aspects.terminal
 
-      den.aspects.rosepine
+      den.aspects.gruvbox
     ];
 
   };
