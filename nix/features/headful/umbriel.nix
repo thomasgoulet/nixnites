@@ -1,4 +1,9 @@
-{ config, osConfig, pkgs, ... }:
+{
+  config,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   colors = config.lib.stylix.colors.withHashtag;
   inherit (osConfig.host) display keyboard;
@@ -92,7 +97,7 @@ in
       events.lid_close = "noctalia msg session lock";
 
       keybinds = {
-        "Mod+T" = "spawn alacritty";
+        "Mod+T" = "spawn wezterm";
         "Mod+D" = "spawn noctalia msg panel-toggle launcher";
         "Super+Escape" = "spawn noctalia msg session lock";
 

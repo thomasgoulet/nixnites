@@ -73,32 +73,27 @@ in
         };
 
         environment.systemPackages = [
-          # TODO - Remove alacritty after installing a better terminal emulator
-          pkgs.alacritty
-
           pkgs.bitwarden-cli
-
           inputs.zen-browser.packages.${pkgs.system}.default
         ];
 
       };
 
-    homeManager =
-      {
-        imports = [
-          (inputs.import-tree ./headful)
-          inputs.spicetify-nix.homeManagerModules.spicetify
-          inputs.umbriel.homeModules.default
-          inputs.noctalia.homeModules.default
-        ];
+    homeManager = {
+      imports = [
+        (inputs.import-tree ./headful)
+        inputs.spicetify-nix.homeManagerModules.spicetify
+        inputs.umbriel.homeModules.default
+        inputs.noctalia.homeModules.default
+      ];
 
-        programs.spicetify = {
-          enable = true;
-          wayland = true;
-        };
-
-        programs.vesktop.enable = true;
-        services.mpris-proxy.enable = true;
+      programs.spicetify = {
+        enable = true;
+        wayland = true;
       };
+
+      programs.vesktop.enable = true;
+      services.mpris-proxy.enable = true;
+    };
   };
 }
