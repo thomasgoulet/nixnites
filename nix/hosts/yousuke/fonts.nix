@@ -12,11 +12,7 @@
     ];
     fontconfig = {
       enable = true;
-      defaultFonts = {
-        monospace = [ "CaskaydiaCove Nerd Font" ];
-        sansSerif = [ "Inter" ];
-        serif = [ "Lora" ];
-      };
+      defaultFonts.serif = [ "Lora" ];
     };
   };
 }

@@ -1,6 +1,6 @@
 { osConfig, ... }:
 let
-  inherit (osConfig.host) display;
+  display = osConfig.host.display;
 in
 {
   programs.noctalia = {

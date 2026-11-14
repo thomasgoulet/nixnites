@@ -6,7 +6,7 @@
       den.batteries.primary-user
       den.aspects.adblock
       den.aspects.dashboard
-      den.aspects.catppuccin-mocha
+      den.aspects.gruvbox
       den.aspects.excalidash
       den.aspects.dotfiles
       den.aspects.headful

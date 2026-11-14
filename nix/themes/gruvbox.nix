@@ -15,7 +15,7 @@
 
           base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
           override.base10 = "191c1d";
-          image = ../../resources/wallpaper/catppuccin.jpg;
+          image = ../../resources/wallpaper/gruvbox.png;
 
           cursor = {
             package = pkgs.bibata-cursors;
