@@ -8,7 +8,7 @@
       ...
     }:
     let
-      hm = inputs.home-manager.lib.homeManagerConfiguration {
+      homeManager = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs'; };
         modules = [
@@ -21,26 +21,17 @@
               settings.theme = "catppuccin_mocha";
             };
           }
-          (inputs.import-tree ./features/editor)
+          ./features/editor/settings.nix
         ];
       };
 
-      helix = hm.config.programs.helix;
-      toml = pkgs.formats.toml { };
-
-      configFile = toml.generate "config.toml" (
+      helix = homeManager.config.programs.helix;
+      configFile = (pkgs.formats.toml { }).generate "config.toml" (
         helix.settings
         // {
           editor = removeAttrs helix.settings.editor [ "shell" ];
         }
       );
-
-      configDir = pkgs.linkFarm "helix-config" [
-        {
-          name = "helix/languages.toml";
-          path = toml.generate "languages.toml" helix.languages;
-        }
-      ];
     in
     {
       packages = {
@@ -51,9 +42,7 @@
           meta.mainProgram = "hx";
           postBuild = ''
             wrapProgram $out/bin/hx \
-              --add-flags "-c ${configFile}" \
-              --set XDG_CONFIG_HOME ${configDir} \
-              --prefix PATH : ${lib.makeBinPath (hm.config.home.packages ++ [ pkgs.git ])}
+              --add-flags "-c ${configFile}"
           '';
         };
       }
