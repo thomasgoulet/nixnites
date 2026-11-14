@@ -4,7 +4,6 @@
 
     includes = [
       den.batteries.primary-user
-      den.aspects.catppuccin-mocha
       den.aspects.dashboard
       den.aspects.docker
       den.aspects.dotfiles
@@ -14,6 +13,8 @@
       den.aspects.opencode
       den.aspects.search
       den.aspects.terminal
+
+      den.aspects.catppuccin
     ];
 
   };

@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.catppuccin-mocha = {
+  den.aspects.catppuccin = {
 
     includes = [
       den.aspects.stylix
@@ -44,6 +44,7 @@
         bat.config.theme = "Catppuccin Mocha";
         git.settings.delta.syntax-theme = "Catppuccin Mocha";
         helix.settings.theme = "catppuccin_mocha";
+        herdr.settings.theme.name = "catppuccin";
       };
 
       stylix = {
