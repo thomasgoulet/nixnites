@@ -123,6 +123,22 @@
                     size = "full";
                     widgets = [
                       {
+                        type = "monitor";
+                        cache = "1m";
+                        sites = [
+                          {
+                            title = "SearXNG";
+                            url = "http://localhost:8888";
+                            icon = "si:searxng";
+                          }
+                          {
+                            title = "Excalidraw";
+                            url = "http://localhost:6767";
+                            icon = "si:excalidraw";
+                          }
+                        ];
+                      }
+                      {
                         type = "bookmarks";
                         groups = [
                           {
