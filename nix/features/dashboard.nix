@@ -136,6 +136,11 @@
                             url = "http://localhost:6767";
                             icon = "si:excalidraw";
                           }
+                          {
+                            title = "MarimoHub";
+                            url = "http://localhost:8886";
+                            icon = "si:python";
+                          }
                         ];
                       }
                       {

@@ -7,6 +7,7 @@
       den.aspects.adblock
       den.aspects.dashboard
       den.aspects.excalidash
+      den.aspects.marimohub
       den.aspects.dotfiles
       den.aspects.headful
       den.aspects.notes
