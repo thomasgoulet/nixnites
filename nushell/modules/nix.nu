@@ -15,9 +15,9 @@ export module mod {
 
     ### Alias
 
-    export alias plan = herdr report "nix build" 5sec { nh os test --impure --dry --diff always --hostname $env.NH_HOST };
-    export alias apply = herdr report "nix switch" 5sec { nh os switch --impure --diff always --hostname $env.NH_HOST };
-    export alias update = herdr report "nix update" 5sec { nh os test --impure --update --diff always --hostname $env.NH_HOST };
+    export alias plan = herdr report "nix build" 5sec { nh os test --dry --diff always --hostname $env.NH_HOST };
+    export alias apply = herdr report "nix switch" 5sec { nh os switch --diff always --hostname $env.NH_HOST };
+    export alias update = herdr report "nix update" 5sec { nh os test --update --diff always --hostname $env.NH_HOST };
     export alias gc = herdr report "nix gc" 5sec { nh clean all --keep 2 };
 
     ### Commands

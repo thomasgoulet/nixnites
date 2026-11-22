@@ -12,8 +12,11 @@
   };
 
   den.aspects.yousuke = {
-    nixos.imports = [
-      (inputs.import-tree ./yousuke)
-    ];
+    nixos =
+      { ... }:
+      {
+        imports = [ (inputs.import-tree ./yousuke) ];
+        environment.variables.NH_FLAKE = "/home/thom/repos/nixnites";
+      };
   };
 }

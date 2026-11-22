@@ -21,9 +21,6 @@
     nixos =
       { ... }:
       {
-        # Run `nh` with `NH_FLAKE=<path to this repo>` during first activation
-        environment.variables.NH_FLAKE = builtins.getEnv "NH_FLAKE";
-
         system.stateVersion = "26.05";
 
         nix.gc = {

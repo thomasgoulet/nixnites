@@ -9,55 +9,22 @@
     }:
     let
       flakePath = osConfig.environment.variables.NH_FLAKE;
-      requiredDirectories = [
-        "symlinks"
-        "nushell"
+      symlinkDirectories = [ "nix" ];
+      nushellFiles = [
+        "aliases.nu"
+        "config.nu"
+        "modules"
+        "scripts"
+        "tools"
       ];
-
-      hasFlakeFile =
-        (flakePath != "")
-        && (lib.hasPrefix "/" flakePath)
-        && (builtins.pathExists "${flakePath}/flake.nix");
-
-      repositoryDirectories = if hasFlakeFile then builtins.readDir flakePath else { };
-
-      hasRequiredDirectories =
-        requiredDirectories |> builtins.all (name: (repositoryDirectories.${name} or null) == "directory");
-
-      symlinkDirectories =
-        if hasRequiredDirectories then
-          (
-            builtins.readDir "${flakePath}/symlinks"
-            |> lib.filterAttrs (_: type: type == "directory")
-            |> builtins.attrNames
-          )
-        else
-          [ ];
-
+      outOfStore = path: {
+        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/${path}";
+      };
     in
     {
-      assertions = [
-        {
-          assertion = hasFlakeFile;
-          message = ''
-            NH_FLAKE must be an absolute local path to this repository's root directory.
-            Set NH_FLAKE to <repository path> and evaluate with --impure.
-          '';
-        }
-        {
-          assertion = hasRequiredDirectories;
-          message = ''
-            NH_FLAKE must contain `symlinks` and `nushell`
-          '';
-        }
-      ];
-
-      xdg.configFile =
-        (lib.genAttrs symlinkDirectories (name: {
-          source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/symlinks/${name}";
-        }))
-        // {
-          nushell.source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/nushell";
-        };
+      xdg.configFile = lib.listToAttrs (
+        map (name: lib.nameValuePair "nushell/${name}" (outOfStore "nushell/${name}")) nushellFiles
+        ++ map (name: lib.nameValuePair name (outOfStore "symlinks/${name}")) symlinkDirectories
+      );
     };
 }

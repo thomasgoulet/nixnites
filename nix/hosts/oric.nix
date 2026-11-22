@@ -10,8 +10,9 @@
   };
 
   den.aspects.oric = {
-    nixos.imports = [
-      (inputs.import-tree ./oric)
-    ];
+    nixos = {
+      imports = [ (inputs.import-tree ./oric) ];
+      environment.variables.NH_FLAKE = "/home/thomas/repos/nixnites";
+    };
   };
 }

@@ -17,6 +17,7 @@
       }:
       let
         inherit (lib) concatStringsSep mapAttrsToList;
+
         envToString =
           name: value:
           if builtins.isString value || builtins.isPath value || builtins.isInt value then
@@ -25,11 +26,12 @@
             concatStringsSep ":" (map (envToString name) value)
           else
             throw "nushell: environment variable ${name} has unsupported type ${builtins.typeOf value}";
+
         env =
           ((removeAttrs osConfig.environment.variables [ "PATH" ]) // config.home.sessionVariables)
           |> mapAttrsToList (name: value: "$env.${name} = \"${envToString name value}\"")
           |> concatStringsSep "\n";
-        checkoutPath = osConfig.environment.variables.NH_FLAKE;
+
         generatedEnv = pkgs.writeText "nushell-env.nu" (env + "\n" + (builtins.readFile ./nushell/env.nu));
       in
       {
@@ -38,11 +40,7 @@
           pkgs.nushell
         ];
 
-        home.activation.nushellEnv = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          $DRY_RUN_CMD ${pkgs.coreutils}/bin/ln -sfnT \
-            ${lib.escapeShellArg generatedEnv} \
-            ${lib.escapeShellArg "${checkoutPath}/nushell/env.nu"}
-        '';
+        xdg.configFile."nushell/env.nu".source = generatedEnv;
 
         programs.bat.syntaxes.nushell = {
           src = ./nushell;
