@@ -13,11 +13,13 @@
         virtualisation.oci-containers.backend = "docker";
         virtualisation.docker = {
           enable = true;
-          daemon.settings.userland-proxy = false;
+          daemon.settings = {
+            userland-proxy = false;
+            ip = "127.0.0.1";
+          };
         };
 
         systemd.services.docker = {
-          after = [ "multi-user.target" ];
           before = lib.mkForce [ "shutdown.target" ];
         };
       };
