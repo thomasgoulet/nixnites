@@ -10,46 +10,50 @@
     "aarch64-darwin"
   ];
 
-  den.default = {
-    includes = [
-      den.batteries.define-user
-      den.batteries.hostname
-      den.batteries.inputs'
-      den.batteries.self'
-    ];
+  den = {
+    schema.host.includes = [ den.batteries.user-aspects ];
 
-    nixos =
-      { ... }:
-      {
-        system.stateVersion = "26.05";
+    default = {
+      includes = [
+        den.batteries.define-user
+        den.batteries.hostname
+        den.batteries.inputs'
+        den.batteries.self'
+      ];
 
-        nix.gc = {
-          automatic = true;
-          persistent = true;
-          dates = "Fri *-*-* 06:00:00";
-          options = "--delete-older-than 7d";
+      nixos =
+        { ... }:
+        {
+          system.stateVersion = "26.05";
+
+          nix.gc = {
+            automatic = true;
+            persistent = true;
+            dates = "Fri *-*-* 06:00:00";
+            options = "--delete-older-than 7d";
+          };
+
+          nix.settings = {
+            auto-optimise-store = true;
+            experimental-features = [
+              "pipe-operators"
+              "nix-command"
+              "flakes"
+            ];
+          };
+
+          home-manager = {
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
         };
 
-        nix.settings = {
-          auto-optimise-store = true;
-          experimental-features = [
-            "pipe-operators"
-            "nix-command"
-            "flakes"
-          ];
+      homeManager =
+        { ... }:
+        {
+          home.stateVersion = "26.05";
         };
-
-        home-manager = {
-          backupFileExtension = "backup";
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      };
-
-    homeManager =
-      { ... }:
-      {
-        home.stateVersion = "26.05";
-      };
+    };
   };
 }
