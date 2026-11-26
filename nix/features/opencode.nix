@@ -167,6 +167,7 @@ in
             diffs.wrap = "none";
             session = {
               sidebar = "hide";
+              grouping = "none";
               scrollbar = false;
               thinking = "show";
             };
