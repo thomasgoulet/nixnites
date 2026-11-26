@@ -149,7 +149,7 @@
       backspace = {
         a = ":sh herdr.nu run tab 0 opencode";
         b = ":sh herdr.nu run tab 0 git blame %{buffer_name}";
-        f = ":sh herdr.nu run pane 0.7 broot";
+        f = ":sh herdr.nu run pane 0.5 broot";
         g = ":sh herdr.nu run pane 0.5 lazygit o> /dev/null";
         p = ":sh herdr.nu run pane 0.5 leaf %{buffer_name} o> /dev/null";
         s = ":sh nix.nu toggle-symlink %{buffer_name}";
