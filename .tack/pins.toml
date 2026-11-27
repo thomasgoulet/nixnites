@@ -1,0 +1,75 @@
+# tack pins
+# edit by hand or with tack add / rm / alias
+# nix reads pins.lock.json
+# this file drives tack update
+
+# shorturl schemes
+# scheme rest expands rest into {path}
+[shorturls]
+community = "github:nix-community/{path}"
+denful = "github:denful/{path}"
+noctalia = "github:noctalia-dev/{path}"
+
+[all_follow]
+nixpkgs = ["nixpkgs", "stable", "unstable"]
+flake-parts = "flake-parts"
+home-manager = "home-manager"
+
+[inputs]
+
+[inputs.nixpkgs]
+url = "github:nixos/nixpkgs/nixos-unstable"
+group = "packages"
+
+[inputs.nixpkgs-stable]
+url = "github:nixos/nixpkgs/26.05"
+group = "packages"
+
+[inputs.nixos-wsl]
+url = "github:nix-community/NixOS-WSL/main"
+group = "system"
+
+[inputs.home-manager]
+url = "github:nix-community/home-manager"
+follows = { nixpkgs = "nixpkgs" }
+group = "system"
+
+[inputs.stylix]
+url = "community:stylix"
+group = "wiring"
+
+[inputs.den]
+url = "denful:den"
+group = "wiring"
+
+[inputs.import-tree]
+url = "denful:import-tree"
+group = "wiring"
+
+[inputs.flake-parts]
+url = "github:hercules-ci/flake-parts"
+group = "wiring"
+
+[inputs.umbriel]
+url = "noctalia:umbriel"
+group = "headful"
+
+[inputs.noctalia]
+url = "noctalia:noctalia/cachix"
+group = "headful"
+
+[inputs.nu-mcp]
+url = "github:ck3mp3r/nu-mcp"
+group = "packages"
+
+[inputs.zen-browser]
+url = "github:0xc000022070/zen-browser-flake"
+group = "headful"
+
+[inputs.spicetify-nix]
+url = "github:Gerg-L/spicetify-nix"
+group = "headful"
+
+[groups.desktop]
+follows = { nixpkgs = "nixpkgs" }
+
