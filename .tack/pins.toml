@@ -17,6 +17,10 @@ home-manager = "home-manager"
 
 [inputs]
 
+[inputs.tack]
+url = "github:manic-systems/tack"
+tag = "v{version}"
+
 [inputs.nixpkgs]
 url = "github:nixos/nixpkgs/nixos-unstable"
 group = "packages"

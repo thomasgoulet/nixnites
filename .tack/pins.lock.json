@@ -1,4 +1,20 @@
 {
+  "$declared": {
+    "den": "github:denful/den",
+    "flake-parts": "github:hercules-ci/flake-parts",
+    "home-manager": "github:nix-community/home-manager",
+    "import-tree": "github:denful/import-tree",
+    "nixos-wsl": "github:nix-community/NixOS-WSL/main",
+    "nixpkgs": "github:nixos/nixpkgs/nixos-unstable",
+    "nixpkgs-stable": "github:nixos/nixpkgs/26.05",
+    "noctalia": "github:noctalia-dev/noctalia/cachix",
+    "nu-mcp": "github:ck3mp3r/nu-mcp",
+    "spicetify-nix": "github:Gerg-L/spicetify-nix",
+    "stylix": "github:nix-community/stylix",
+    "tack": "github:manic-systems/tack",
+    "umbriel": "github:noctalia-dev/umbriel",
+    "zen-browser": "github:0xc000022070/zen-browser-flake"
+  },
   "den": {
     "type": "github",
     "owner": "denful",
@@ -19,9 +35,10 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "home-manager",
-    "rev": "361da94fb55c67094ec47322d2757d6616a0de92",
-    "narHash": "sha256-GUY/RHSSnAJKKI3xk7xrSXrsXFgIOgFrRJOD4uub5J8=",
-    "lastModified": 1795713076
+    "rev": "54f903fdaaf5d5720ed36706fe75332af69eb793",
+    "narHash": "sha256-J1iQ1QMnkFwZFXnlPt2t3Qx7TsGjw08/0L3QMqNt+Wg=",
+    "lastModified": 1795748630,
+    "public": true
   },
   "import-tree": {
     "type": "github",
@@ -87,20 +104,33 @@
     "narHash": "sha256-bzTDA4xxj8+KNo/qWDgDGOKqfWWlH5GCkVw+e70HWu0=",
     "lastModified": 1795479262
   },
+  "tack": {
+    "type": "github",
+    "owner": "manic-systems",
+    "repo": "tack",
+    "rev": "393ed432b3321a44a87e8a588552b51d5dad8f6e",
+    "narHash": "sha256-CUECELH3ty3Imlmbt88IC+ZkUxHPyd3FHuN9WWG4P+c=",
+    "lastModified": 1795730888,
+    "public": true,
+    "tag": "v2.0.0",
+    "version": "2.0.0"
+  },
   "umbriel": {
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "0760394b3a97702a95833d2fb6985f36464a9417",
-    "narHash": "sha256-+IN1PV8B53lfCJASs3x2HstrfVk/vnKdL3N9SdPqPE4=",
-    "lastModified": 1795737803
+    "rev": "48839a34add75214d37bce8c4d18edd37926f9e0",
+    "narHash": "sha256-qTWFo4a/Nja5xmiggiXDMCRbmxTx9PDoaJIXKC9fuOI=",
+    "lastModified": 1795786872,
+    "public": true
   },
   "zen-browser": {
     "type": "github",
     "owner": "0xc000022070",
     "repo": "zen-browser-flake",
-    "rev": "abbd61739b1d73fe0c2c4413143efb9ccafea59e",
-    "narHash": "sha256-hZTHT7oXTrxXi36tKUN4G0lElMgnHQ1nVEV02qxXRZ0=",
-    "lastModified": 1795668840
+    "rev": "8fff5095fe8dcf614c2a4bec4ca346a800910e11",
+    "narHash": "sha256-tQ5YNz44fWJ7VWWia5ivfr5ZTlPR6GAxJkna4Z8j2bY=",
+    "lastModified": 1795762905,
+    "public": true
   }
 }

@@ -22,8 +22,9 @@
       ];
 
       nixos =
-        { ... }:
+        { inputs', ... }:
         {
+
           system.stateVersion = "26.05";
 
           nix.gc = {
@@ -47,6 +48,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
           };
+
+          programs.nh.enable = true;
+          environment.systemPackages = [ inputs'.tack.packages.default ];
+
         };
 
       homeManager =
