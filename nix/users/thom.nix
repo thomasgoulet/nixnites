@@ -15,7 +15,7 @@
       den.aspects.search
       den.aspects.terminal
 
-      den.aspects.gruvbox
+      den.aspects.catppuccin
     ];
 
   };
